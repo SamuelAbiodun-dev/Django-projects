@@ -1,0 +1,14 @@
+
+div{
+    display: flex;
+    justify-content: center;
+}
+div p{
+    color: blue;
+}
+.image{
+    width: 30px;
+}
+/*.image1{*/
+/*    */
+/*}*/

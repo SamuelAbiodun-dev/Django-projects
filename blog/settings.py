@@ -14,8 +14,8 @@ from pathlib import Path
 import os
 import environ
 
-env = environ.Env()
-environ.Env().read_env()
+# env = environ.Env()
+# environ.Env().read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,16 +24,25 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env("SECRET_KEY")
+# SECRET_KEY = env("SECRET_KEY")
+SECRET_KEY = "django-insecure-egea)*!#$wf67g%pde%mx#ua6=ni#trt$a&+*zut@xq_h*hmmk"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
 
+LOGIN_REDIRECT_URL = 'home2'
+LOGOUT_REDIRECT_URL = 'home2'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_FILE_PATH = BASE_DIR / 'emails'
+
 # Application definition
 
 INSTALLED_APPS = [
+    # 'rest_framework',
+    # 'drinks',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,6 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'post',
+    'account'
 ]
 
 MIDDLEWARE = [
@@ -58,7 +68,7 @@ ROOT_URLCONF = 'blog.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -78,8 +88,11 @@ WSGI_APPLICATION = 'blog.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'blog_db',
+        'USER': 'root',
+        'PASSWORD': 'samucolon',
+        'HOST': 'localhost',
     }
 }
 
@@ -116,8 +129,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [
+    BASE_DIR / 'static'
+]
+# STATICFILES_DIRS = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+

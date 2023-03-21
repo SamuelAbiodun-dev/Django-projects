@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block content %}
+<form action="" method="post">
+    {% csrf_token %}
+    <p>Are you sure you want to delete the post titled "{{post.title}}"?</p>
+<!--    <input type="submit", value="Yes">-->
+<!--    <input type="submit", value="No">-->
+    <input type="submit", value="yes">
+    <input type="button", value="no">
+</form>
+{% endblock %}
+</body>
+</html>

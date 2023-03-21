@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="{% static 'style/tag.css' %}" rel="stylesheet"/>
+</head>
+<body>
+<!--<div>-->
+<!--    <div class="image1">-->
+<!--        <img class="image" src="../../static/image/my_website_logo (2).jpg">-->
+<!--    </div>-->
+<!--    <div>-->
+<!--    <p>Welcome to Django cohort 13</p>-->
+<!--</div>-->
+<!--</div>-->
+    {% for post in posts %}
+    <h1>{{  post.title }}</h1>
+    <h2>{{ post.body }}</h2>
+    {% endfor %}
+</body>
+</html>
